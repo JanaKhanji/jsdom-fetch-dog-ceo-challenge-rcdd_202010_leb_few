@@ -3,20 +3,23 @@ console.log('%c HI', 'color: firebrick')
 const dogList = document.querySelector("#dog-breeds")
 const dropdown = document.querySelector("#breed-dropdown")
 
-// Approach 1: Stateful
-// store all the breeds in an array
-// filter the array
-// (also, clear the list)
-// use that list to display
+document.addEventListener('DOMContentLoaded', function () {
+  loadImages();
+  loadBreedOptions();
+});
 
-// Approach 2: DOM Source Of Truth
-// iterate over all the lis
-// if they don't start with the letter, hide them with CSS
+function loadImages() {
+  const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
+  fetch(imgUrl)
+    .then(res=> res.json())
+    .then(results => {results.message.forEach(image => renderImage(image)
+    )}
+    )}
+
 
 // State
 let breedList = []
 
-// added the event listener to the dropdown
 dropdown.addEventListener("change", event => {
   // got the selected value
   const letter = event.target.value
